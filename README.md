@@ -122,3 +122,10 @@ This project is licensed under the MIT License.
 ## Status
 
 Active development. Not production-ready.
+
+## Documentation
+
+All project planning, architecture notes, and detailed design documents for Raveline are maintained in Notion:
+
+Notion:
+https://www.notion.so/RaveLine-2c6936f54c6180da8570e2443a05e647
