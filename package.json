@@ -1,0 +1,34 @@
+{
+  "name": "raveline",
+  "version": "1.0.0",
+  "description": "Raveline is a distributed, event-driven content moderation system that analyzes text and images in real time using microservices, Kafka pipelines, and machine learning models. It provides a scalable Trust & Safety backend that any application can integrate with through a simple moderation API.",
+  "main": "index.js",
+  "scripts": {
+    "dev": "tsx watch src/server.ts",
+    "build": "tsc",
+    "start": "node dist/server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/YHQZ1/RaveLine.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "bugs": {
+    "url": "https://github.com/YHQZ1/RaveLine/issues"
+  },
+  "homepage": "https://github.com/YHQZ1/RaveLine#readme",
+  "dependencies": {
+    "bullmq": "^5.66.2",
+    "express": "^5.2.1",
+    "ioredis": "^5.8.2"
+  },
+  "devDependencies": {
+    "@types/express": "^5.0.6",
+    "@types/node": "^25.0.3",
+    "tsx": "^4.21.0",
+    "typescript": "^5.9.3"
+  }
+}

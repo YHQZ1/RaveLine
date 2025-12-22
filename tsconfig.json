@@ -1,0 +1,33 @@
+{
+  "compilerOptions": {
+    /* Language & Environment */
+    "target": "ESNext",
+
+    /* Module System */
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext",
+
+    /* Project Structure */
+    "rootDir": "src",
+    "outDir": "dist",
+
+    /* Type Definitions */
+    "types": ["node"],
+
+    /* Strictness */
+    "strict": true,
+    "noUncheckedIndexedAccess": true,
+    "exactOptionalPropertyTypes": true,
+
+    /* Module Semantics */
+    "verbatimModuleSyntax": true,
+    "isolatedModules": true,
+
+    /* Output */
+    "sourceMap": true,
+
+    /* Performance / Sanity */
+    "skipLibCheck": true
+  },
+  "include": ["src"]
+}
