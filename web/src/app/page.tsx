@@ -75,7 +75,12 @@ export default function RavelineLanding() {
             </a>
 
             {/* CTA */}
-            <a className="flex items-center px-8 bg-black text-white text-xs uppercase tracking-widest hover:bg-orange-600 transition-colors duration-300 cursor-pointer border-l border-black">
+            <a
+              href="https://github.com/YHQZ1/RaveLine"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center px-8 bg-black text-white text-xs uppercase tracking-widest hover:bg-orange-600 transition-colors duration-300 cursor-pointer border-l border-black"
+            >
               GitHub
             </a>
           </div>
