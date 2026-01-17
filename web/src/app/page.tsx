@@ -1,9 +1,27 @@
+/* eslint-disable @next/next/no-img-element */
 "use client";
 
-import React, { useState } from "react";
+import { useState } from "react";
 
 export default function RavelineLanding() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  const languages = [
+    { name: "Node.js", slug: "nodedotjs" },
+    { name: "TypeScript", slug: "typescript" },
+    { name: "Python", slug: "python" },
+    { name: ".NET", slug: "dotnet" },
+    { name: "Go", slug: "go" },
+    { name: "Rust", slug: "rust" },
+    { name: "Ruby", slug: "ruby" },
+    { name: "PHP", slug: "php" },
+    { name: "Kotlin", slug: "kotlin" },
+    { name: "Scala", slug: "scala" },
+    { name: "Elixir", slug: "elixir" },
+    { name: "Swift", slug: "swift" },
+    { name: "C++", slug: "cplusplus" },
+    { name: "Haskell", slug: "haskell" },
+  ];
 
   return (
     <div className="min-h-screen bg-white text-black font-['Inter',sans-serif] overflow-x-hidden selection:bg-orange-500 selection:text-white">
@@ -36,7 +54,7 @@ export default function RavelineLanding() {
       {/* Navigation - Edge to Edge */}
       <nav className="fixed top-0 left-0 right-0 bg-white z-50 border-b border-black">
         <div className="flex items-stretch h-14">
-          {/* Logo Section */}
+          {/* Logo */}
           <div className="flex items-center px-6 border-r border-black shrink-0">
             <div className="flex items-center gap-3">
               <div className="w-4 h-4 bg-orange-600"></div>
@@ -44,10 +62,23 @@ export default function RavelineLanding() {
             </div>
           </div>
 
-          {/* CTA Button */}
-          <a className="hidden md:flex ml-auto items-center px-8 bg-black text-white text-xs uppercase tracking-widest hover:bg-orange-600 transition-colors duration-300">
-            Get Access
-          </a>
+          {/* Right-aligned Nav */}
+          <div className="hidden md:flex ml-auto items-stretch">
+            {/* Docs */}
+            <a className="px-6 text-xs uppercase tracking-widest hover:text-orange-600 transition-colors cursor-pointer border-l border-black flex items-center">
+              Docs
+            </a>
+
+            {/* API */}
+            <a className="px-6 text-xs uppercase tracking-widest hover:text-orange-600 transition-colors cursor-pointer border-l border-black flex items-center">
+              API
+            </a>
+
+            {/* CTA */}
+            <a className="flex items-center px-8 bg-black text-white text-xs uppercase tracking-widest hover:bg-orange-600 transition-colors duration-300 cursor-pointer border-l border-black">
+              GitHub
+            </a>
+          </div>
 
           {/* Mobile Menu Toggle */}
           <button
@@ -56,13 +87,19 @@ export default function RavelineLanding() {
           >
             <div className="space-y-1.5">
               <div
-                className={`w-6 h-0.5 bg-black transition-transform ${isMenuOpen ? "rotate-45 translate-y-2" : ""}`}
+                className={`w-6 h-0.5 bg-black transition-transform ${
+                  isMenuOpen ? "rotate-45 translate-y-2" : ""
+                }`}
               ></div>
               <div
-                className={`w-6 h-0.5 bg-black transition-opacity ${isMenuOpen ? "opacity-0" : ""}`}
+                className={`w-6 h-0.5 bg-black transition-opacity ${
+                  isMenuOpen ? "opacity-0" : ""
+                }`}
               ></div>
               <div
-                className={`w-6 h-0.5 bg-black transition-transform ${isMenuOpen ? "-rotate-45 -translate-y-2" : ""}`}
+                className={`w-6 h-0.5 bg-black transition-transform ${
+                  isMenuOpen ? "-rotate-45 -translate-y-2" : ""
+                }`}
               ></div>
             </div>
           </button>
@@ -382,23 +419,30 @@ export default function RavelineLanding() {
               Simple, type-safe SDKs for every major platform. Drop Raveline
               into your middleware and forget about it.
             </p>
-            <div className="space-y-6">
-              {["TypeScript", "Python", "Go", "Rust"].map((lang, i) => (
-                <div
-                  key={lang}
-                  className="flex items-center gap-6 group cursor-pointer border-l-2 border-transparent hover:border-orange-600 pl-6 transition-all"
-                >
-                  <div className="w-6 h-6 border-2 border-black group-hover:bg-black transition-colors flex items-center justify-center">
-                    <div className="w-2 h-2 bg-orange-600 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+
+            {/* Language Compatibility Section */}
+            <div className="border-t border-black/10 pt-8">
+              <div className="text-xs uppercase tracking-[0.25em] mb-6 opacity-40">
+                Compatible with 25+ languages & platforms
+              </div>
+              <div className="flex flex-wrap gap-2">
+                {languages.map((lang) => (
+                  <div
+                    key={lang.name}
+                    className="flex items-center gap-2 text-sm font-mono px-3 py-1 border border-black/20 hover:border-orange-600 hover:text-orange-600 transition-colors cursor-pointer"
+                  >
+                    <img
+                      src={`https://cdn.simpleicons.org/${lang.slug}/000000`}
+                      alt={lang.name}
+                      className="w-4 h-4"
+                    />
+                    {lang.name}
                   </div>
-                  <span className="text-base font-mono uppercase tracking-widest group-hover:text-orange-600 transition-colors">
-                    {lang} SDK
-                  </span>
-                  <div className="ml-auto text-2xl font-bold opacity-10 group-hover:opacity-100 transition-opacity">
-                    0{i + 1}
-                  </div>
+                ))}
+                <div className="text-xs font-mono px-3 py-1 border border-black/20 opacity-40">
+                  +10 more
                 </div>
-              ))}
+              </div>
             </div>
           </div>
 
@@ -465,7 +509,7 @@ export default function RavelineLanding() {
         </div>
       </section>
 
-      {/* Use Cases Section - NEW */}
+      {/* Use Cases Section */}
       <section className="border-b border-black">
         <div className="p-16 lg:p-24 bg-white">
           <div className="max-w-6xl mx-auto">
@@ -547,7 +591,7 @@ export default function RavelineLanding() {
         </div>
       </section>
 
-      {/* Architecture Section - NEW */}
+      {/* Architecture Section */}
       <section className="border-b border-black bg-neutral-50">
         <div className="grid lg:grid-cols-2">
           <div className="p-16 lg:p-32 flex flex-col justify-center border-r border-black bg-white">
@@ -613,7 +657,7 @@ export default function RavelineLanding() {
         </div>
       </section>
 
-      {/* CTA Section - NEW */}
+      {/* CTA Section */}
       <section className="border-b border-black bg-black text-white">
         <div className="p-16 lg:p-32 text-center">
           <h2 className="text-6xl lg:text-8xl font-bold tracking-tighter mb-8 leading-[0.9]">
