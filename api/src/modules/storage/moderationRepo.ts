@@ -1,27 +1,76 @@
 import { db } from "../../config";
 
-interface SaveModerationParams {
+export interface SaveModerationParams {
   id: string;
-  content: string;
-  contentType: string;
+  requestKey?: string;
+
   userId: string;
   source: string;
-  decision: string;
+
+  contentType: "text" | "image" | "video";
+  content?: string;
+  contentRef?: string;
+
+  evaluation: unknown;
+
+  decision: "allow" | "block" | "flag";
   reason: string;
+  policyVersion: string;
+
+  metadata?: unknown;
 }
 
 export async function saveModerationRequest(
   params: SaveModerationParams,
 ): Promise<void> {
-  const { id, content, contentType, userId, source, decision, reason } = params;
+  const {
+    id,
+    requestKey,
+    userId,
+    source,
+    contentType,
+    content,
+    contentRef,
+    evaluation,
+    decision,
+    reason,
+    policyVersion,
+    metadata,
+  } = params;
 
   await db.query(
     `
-    INSERT INTO moderation_requests
-      (id, content, content_type, user_id, source, decision, reason)
-    VALUES
-      ($1, $2, $3, $4, $5, $6, $7)
+    INSERT INTO moderation_requests (
+      id,
+      request_key,
+      user_id,
+      source,
+      content_type,
+      content,
+      content_ref,
+      evaluation,
+      decision,
+      reason,
+      policy_version,
+      metadata
+    ) VALUES (
+      $1, $2, $3, $4, $5, $6,
+      $7, $8, $9, $10, $11, $12
+    )
     `,
-    [id, content, contentType, userId, source, decision, reason],
+    [
+      id,
+      requestKey ?? null,
+      userId,
+      source,
+      contentType,
+      content ?? null,
+      contentRef ?? null,
+      evaluation,
+      decision,
+      reason,
+      policyVersion,
+      metadata ?? null,
+    ],
   );
 }
